@@ -1,0 +1,62 @@
+function generateIQ() {
+  const name = document.getElementById("nameInput").value.trim();
+  if (name === "") {
+    alert("Please enter a name.");
+    return;
+  }
+
+  // Generate random IQ
+  const iq = Math.floor(Math.random() * 100) + 100; // 100–199
+
+  // Funny descriptions
+  const descriptions = [
+    "Genius with a biscuit empire brain 🧁🚀",
+    "Future tech billionaire 💻💰",
+    "Mastermind who can fix WiFi by looking at it 📶😎",
+    "Too smart to be human 🤖",
+    "Knows HTML better than their ABCs 🔤💻",
+    "Could build a robot with spoons and duct tape 🤖🛠️",
+    "Thinking faster than AI itself 💡⚡",
+    "Creative code magician 🧙‍♂️🧠",
+    "Mixing brains and biscuits like a boss 🍪🧠",
+    "On Elon Musk's level, just quieter 😌🚀"
+  ];
+
+  const randomDescription = descriptions[Math.floor(Math.random() * descriptions.length)];
+
+  // Display results
+  document.getElementById("iqScore").textContent = iq;
+  document.getElementById("description").textContent = `${name}, ${randomDescription}`;
+  document.getElementById("result").classList.remove("hidden");
+}
+function shareToWhatsApp() {
+  const name = document.getElementById("nameInput").value.trim();
+  const iq = document.getElementById("iqScore").textContent;
+  const desc = document.getElementById("description").textContent;
+  const text = `I just checked my IQ: ${iq} 🧠\n${desc} \nTry yours here: [your_website_link]`;
+  const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank");
+}
+
+function shareToFacebook() {
+  const url = "https://yourwebsite.com"; // Replace with your site
+  const fbURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+  window.open(fbURL, "_blank");
+}
+document.getElementById("shareButtons").classList.remove("hidden");
+function downloadScreenshot() {
+  const element = document.querySelector(".container");
+  html2canvas(element).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "MyIQResult.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+}
+function resetApp() {
+  document.getElementById("nameInput").value = "";
+  document.getElementById("iqScore").textContent = "";
+  document.getElementById("description").textContent = "";
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("shareButtons").classList.add("hidden");
+}
