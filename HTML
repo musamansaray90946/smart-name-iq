@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How Smart Is Your Name?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="<button onclick="resetApp()">🔄 Reset</button>
+container">
+    <h1>🧠 How Smart Is Your Name?</h1>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <button onclick="generateIQ()">Check IQ</button>
+
+    <div id="result" class="hidden">
+      <h2>Your IQ Score: <span id="iqScore"></span></h2>
+      <p id="description"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
+<div id="shareButtons" class="hidden">
+  <p>🔗 Share your result:</p>
+  <button onclick="shareToWhatsApp()">WhatsApp</button>
+  <button onclick="shareToFacebook()">Facebook</button>
+</div>
+<button onclick="downloadScreenshot()">📸 Save as Image</button>
+<div id="buttonGroup">
+  <button onclick="shareToWhatsApp()">WhatsApp</button>
+  <button onclick="shareToFacebook()">Facebook</button>
+  <button onclick="downloadScreenshot()">📸 Save as Image</button>
+  <button onclick="resetApp()">🔄 Reset</button>
+</div>
